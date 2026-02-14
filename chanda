@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chanda Collection - Uttam</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px;
+            width: 95%;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>🙏 चंदा संग्रह अभियान 🙏</h2>
+
+<div class="box">
+    <p><b>UPI ID:</b> 9835916343-1@nyes</p>
+    <p>Payment करने के बाद नीचे डिटेल भरें</p>
+
+    <input type="text" id="name" placeholder="आपका नाम">
+    <input type="number" id="amount" placeholder="राशि (₹)">
+    <button onclick="addData()">जमा करें</button>
+</div>
+
+<h3>💰 कुल चंदा: ₹ <span id="total">0</span></h3>
+
+<table>
+    <tr>
+        <th>नाम</th>
+        <th>राशि</th>
+    </tr>
+    <tbody id="donorList"></tbody>
+</table>
+
+<script>
+    let total = 0;
+
+    function addData() {
+        let name = document.getElementById("name").value;
+        let amount = parseInt(document.getElementById("amount").value);
+
+        if(name == "" || isNaN(amount)) {
+            alert("सही जानकारी भरें");
+            return;
+        }
+
+        total += amount;
+        document.getElementById("total").innerText = total;
+
+        let table = document.getElementById("donorList");
+        let row = table.insertRow();
+        row.insertCell(0).innerText = name;
+        row.insertCell(1).innerText = "₹ " + amount;
+
+        document.getElementById("name").value = "";
+        document.getElementById("amount").value = "";
+    }
+</script>
+
+</body>
+</html>
